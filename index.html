@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Manrope' rel='stylesheet'>
+    <title>front_test</title>
+  </head>
+  <body>
+    <header>
+      <p class="front_test">front<span class="white_text">_test</span></p>
+      <p class="header_text">Тестовое задание</p>
+      <p class="task_text">Сверстайте эту страницу включая интерактивные элементы.</p>
+    </header>
+    <main>
+      <div id="fox_task" class="fox_task">
+       <p class="fox_task_text">Анимация: вращение вокруг своей оси автоматически, или с реакцией на мышку.</p> 
+      </div>
+      <div class="card_task">
+        <div class="card">
+          <div class="flex_container">
+            <p class="infinity"><img src="/svg/infinity.svg" alt="infinity"></p>    
+            <p class="card_title">Интерактивная карточка</p>
+            <p class="card_info">Должна вращаться за мышкой</p>
+            <button>
+              <img src="/svg/visibility.svg" class="eye">    
+              <p class="button_text">КНОПКА</p>
+            </button>
+          </div>
+        </div>
+        <p class="card_task_text">Анимация: карточка отклоняется по направлению к курсору. Верхний и нижний слой с птицами повторяет движение карточки с легким параллаксом.</p>
+      </div>
+      <div></div>
+      <div></div>
+
+    </main>
+    <script src="/js/three.js"></script>
+    <script src="/js/GLTFLoader.js"></script>
+    <script>
+      let scene = new THREE.Scene();
+
+      let camera = new THREE.PerspectiveCamera(45, 900 / 640, 0.1, 1000)
+      camera.position.y = 100; 
+      camera.position.z = 300; 
+
+      renderer = new THREE.WebGLRenderer({alpha: true, antialias: true});
+      renderer.setClearColor(0x000000, 0);
+      renderer.setSize(900, 640);
+          
+      renderer.domElement.setAttribute("class", "fox");
+      fox_task.append(renderer.domElement);
+
+      const aLight = new THREE.AmbientLight(0x404040, 1.2);
+      scene.add(aLight);
+
+      const pLight = new THREE.PointLight(0xffffff, 3);
+      pLight.position.set(50, 300, 450);
+      scene.add(pLight);
+
+      let loader = new THREE.GLTFLoader();
+      let obj = null;
+
+      loader.load('/3d/fox.gltf', function(gltf) {
+        obj = gltf;
+        obj.scene.scale.set(1, 1, 1);
+        scene.add(obj.scene);
+      })
+
+      function rotating() {
+
+        requestAnimationFrame(rotating);
+
+        if(obj) obj.scene.rotation.y += 0.03
+
+        renderer.render(scene, camera);
+      }
+
+      rotating();
+    </script>
+    <script>
+      let card = document.querySelector(".card");
+      function getCardCenter() {
+        let x = card.offsetLeft + 50; // (50 + 50) / 2
+        let y = card.offsetTop + 65; // 130 / 2
+        return {
+          x: x,
+          y: y
+        };
+      }
+      
+      document.addEventListener('mousemove', function(e) {
+        let cardCenter = getCardCenter();
+        let angle = Math.atan2(e.clientX - cardCenter.x, -(e.clientY - cardCenter.y)) * (180 / Math.PI);
+        card.style.transform = 'rotate(' + angle + 'deg)';
+      }); 
+    </script>
+  </body>
+</html>
