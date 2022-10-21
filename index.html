@@ -18,26 +18,53 @@
        <p class="fox_task_text">Анимация: вращение вокруг своей оси автоматически, или с реакцией на мышку.</p> 
       </div>
       <div class="card_task">
-        <div class="card">
-          <div class="flex_container">
-            <p class="infinity"><img src="/svg/infinity.svg" alt="infinity"></p>    
-            <p class="card_title">Интерактивная карточка</p>
-            <p class="card_info">Должна вращаться за мышкой</p>
-            <button>
-              <img src="/svg/visibility.svg" class="eye">    
-              <p class="button_text">КНОПКА</p>
-            </button>
-          </div>
-        </div>
+        <section class="parallax">
+          <div class="parallax_body">
+            <div class="card">
+              <div class="flex_container">
+                <p class="infinity"><img src="/svg/infinity.svg" alt="infinity"></p>    
+                <p class="card_title">Интерактивная карточка</p>
+                <p class="card_info">Должна вращаться за мышкой</p>
+                <button class="button">
+                  <img src="/svg/visibility.svg" class="eye">    
+                  <p class="button_text">КНОПКА</p>
+                </button>
+              </div> 
+            </div>   
+            <div class="bird1">
+              <img src="/svg/birds1.svg" class="eye"> 
+            </div> 
+            <div class="bird2">
+              <img src="/svg/birds2.svg" class="eye"> 
+            </div>  
+          </div>  
+        </section>  
         <p class="card_task_text">Анимация: карточка отклоняется по направлению к курсору. Верхний и нижний слой с птицами повторяет движение карточки с легким параллаксом.</p>
       </div>
-      <div></div>
+      <div class="form_task">
+        <form action="" method="" class="form">
+          <p class="form_title">Форма</p>
+          <p class="form_info">Дополнительный текст ⏳</p>
+          <label for="select" class="select_info">Выбор чего-то*</label>
+          <select name="select" class="select">
+            <option value="value1">Выбор1</option>
+            <option value="value2">Выбор2</option>
+            <option value="value3">Выбор3</option>
+            <option value="value4">Выбор4</option>
+            <option value="value5">Выбор5</option>
+          </select>
+          <label for="textarea">Ваш комментарий:</label>
+          <textarea name="textarea" class="textarea"></textarea>
+          <input type="file"/>
+          <input type="submit" class="button"/>
+        </form>
+      </div>
       <div></div>
 
     </main>
     <script src="/js/three.js"></script>
     <script src="/js/GLTFLoader.js"></script>
-    <script>
+    <script> //fox animation script
       let scene = new THREE.Scene();
 
       let camera = new THREE.PerspectiveCamera(45, 900 / 640, 0.1, 1000)
@@ -78,22 +105,31 @@
 
       rotating();
     </script>
-    <script>
-      let card = document.querySelector(".card");
-      function getCardCenter() {
-        let x = card.offsetLeft + 50; // (50 + 50) / 2
-        let y = card.offsetTop + 65; // 130 / 2
-        return {
-          x: x,
-          y: y
-        };
-      }
-      
-      document.addEventListener('mousemove', function(e) {
-        let cardCenter = getCardCenter();
-        let angle = Math.atan2(e.clientX - cardCenter.x, -(e.clientY - cardCenter.y)) * (180 / Math.PI);
-        card.style.transform = 'rotate(' + angle + 'deg)';
-      }); 
+    <script> //card animation script
+
+
+
+
+
+
+      //let card = document.querySelector(".card");
+      //let cardCoord= card.getBoundingClientRect();
+
+      //let block = document.querySelector(".card_task");
+      //let blockCoord = block.getBoundingClientRect();
+
+      //let cardCenterX = cardCoord.left + (cardCoord.width / 2) - blockCoord.left; 
+      //let cardCenterY = cardCoord.top + (cardCoord.height / 2) - blockCoord.top; 
+      //
+      //block.addEventListener('mousemove', function(e) {
+
+      //  let a = e.layerX - cardCenterX;
+      //  let b = e.layerY - cardCenterY;
+      //  angle = Math.atan2(e.layerX - cardCenterX, e.layerY - cardCenterY);
+
+      //  card.style.transform = 'skew('+ 150 + 'deg,' + 150 +'deg)';
+      //});
+
     </script>
   </body>
 </html>
