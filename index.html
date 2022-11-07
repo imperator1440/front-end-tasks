@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="style.css">
     <link href='https://fonts.googleapis.com/css?family=Manrope' rel='stylesheet'>
+    <script src="/js/three.js"></script>
+    <script src="/js/GLTFLoader.js"></script>
+    <script src="/js/jQuery.js"></script>
     <title>front_test</title>
   </head>
   <body>
@@ -18,8 +21,8 @@
        <p class="fox_task_text">Анимация: вращение вокруг своей оси автоматически, или с реакцией на мышку.</p> 
       </div>
       <div class="card_task">
-        <section class="parallax">
-          <div class="parallax_body">
+        <div class="scale">
+          <div class="animation">
             <div class="card">
               <div class="flex_container">
                 <p class="infinity"><img src="/svg/infinity.svg" alt="infinity"></p>    
@@ -36,34 +39,31 @@
             </div> 
             <div class="bird2">
               <img src="/svg/birds2.svg" class="eye"> 
-            </div>  
+            </div>
           </div>  
-        </section>  
+        </div>
         <p class="card_task_text">Анимация: карточка отклоняется по направлению к курсору. Верхний и нижний слой с птицами повторяет движение карточки с легким параллаксом.</p>
       </div>
       <div class="form_task">
         <form action="" method="" class="form">
           <p class="form_title">Форма</p>
           <p class="form_info">Дополнительный текст ⏳</p>
-          <label for="select" class="select_info">Выбор чего-то*</label>
-          <select name="select" class="select">
+
+          <select name="select">
+            <option disabled>Выбор чего-то*</option>
             <option value="value1">Выбор1</option>
             <option value="value2">Выбор2</option>
             <option value="value3">Выбор3</option>
             <option value="value4">Выбор4</option>
             <option value="value5">Выбор5</option>
           </select>
-          <label for="textarea">Ваш комментарий:</label>
-          <textarea name="textarea" class="textarea"></textarea>
-          <input type="file"/>
-          <input type="submit" class="button"/>
+
         </form>
       </div>
       <div></div>
 
     </main>
-    <script src="/js/three.js"></script>
-    <script src="/js/GLTFLoader.js"></script>
+
     <script> //fox animation script
       let scene = new THREE.Scene();
 
@@ -106,30 +106,43 @@
       rotating();
     </script>
     <script> //card animation script
+      const card = document.querySelector(".card");
+      const animation = document.querySelector(".animation")
+      let cardCoord= card.getBoundingClientRect();
+  
+      let block = document.querySelector(".card_task");
+      let blockCoord = block.getBoundingClientRect();
+  
+      let cardCenterX = cardCoord.left + (cardCoord.width / 2) - blockCoord.left; 
+      let cardCenterY = cardCoord.top + (cardCoord.height / 2) - blockCoord.top; 
+      
+      const forCard = 40;
+      const speed = 1;
+      let positionX = 0; positionY = 0;
+      let coordXprocent = 0; coordYprocent = 0;
 
+      block.addEventListener('mousemove', function(e) {
 
+        const blockWidth = block.offsetWidth;
+        const blockHeight = block.offsetHeight;
 
+        const coordX = e.pageX - blockWidth / 2;
+        const coordY = e.pageY - blockHeight / 2;
+        
+        coordXprocent = coordX / blockWidth * 100;
+        coordYprocent = coordY / blockHeight * 100;
 
-
-
-      //let card = document.querySelector(".card");
-      //let cardCoord= card.getBoundingClientRect();
-
-      //let block = document.querySelector(".card_task");
-      //let blockCoord = block.getBoundingClientRect();
-
-      //let cardCenterX = cardCoord.left + (cardCoord.width / 2) - blockCoord.left; 
-      //let cardCenterY = cardCoord.top + (cardCoord.height / 2) - blockCoord.top; 
-      //
-      //block.addEventListener('mousemove', function(e) {
-
-      //  let a = e.layerX - cardCenterX;
-      //  let b = e.layerY - cardCenterY;
-      //  angle = Math.atan2(e.layerX - cardCenterX, e.layerY - cardCenterY);
-
-      //  card.style.transform = 'skew('+ 150 + 'deg,' + 150 +'deg)';
-      //});
-
+        const distX = coordXprocent - positionX;
+        const distY = coordYprocent - positionY;
+        
+        positionX = positionX + (distX * speed);
+        positionY = positionY + (distY * speed);
+        
+        angle = Math.atan2(e.layerX - cardCenterX, cardCenterY) * 0.8;
+        console.log(angle);
+  
+        animation.style.transform = 'translate('+ positionX / forCard + '%,' + positionY / forCard +'%) rotateY('+ angle + 'rad)';    
+      }); //расположить птиц, исправить ротэйт 
     </script>
   </body>
 </html>
