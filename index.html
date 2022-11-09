@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link href='https://fonts.googleapis.com/css?family=Manrope' rel='stylesheet'>
     <script src="/js/three.js"></script>
     <script src="/js/GLTFLoader.js"></script>
@@ -11,12 +11,14 @@
     <title>front_test</title>
   </head>
   <body>
-    <header>
-      <p class="front_test">front<span class="white_text">_test</span></p>
-      <p class="header_text">Тестовое задание</p>
-      <p class="task_text">Сверстайте эту страницу включая интерактивные элементы.</p>
-    </header>
-    <div class="main">
+    <div class="header">
+      <div class="header__container">
+        <div class="header__title-top title title_small">front<span>_test</span></div>
+        <div class="header__title title">Тестовое задание</div>
+        <div class="header__subtitle title title_subtitle">Сверстайте эту страницу включая интерактивные элементы.</div>
+      </div>
+    </div> 
+  <!--<div class="main">
       <div id="fox_task" class="fox_task">
        <p class="fox_task_text">Анимация: вращение вокруг своей оси автоматически, или с реакцией на мышку.</p> 
       </div>
@@ -33,7 +35,7 @@
                   <p class="button_text">КНОПКА</p>
                 </button>
               </div> 
-            </div>   t
+            </div>   
             <div class="bird1">
               <img src="/svg/birds1.svg" class="eye"> 
             </div> 
@@ -63,7 +65,7 @@
       <div></div>
 
     </div>
-
+  -->  
     <script> //fox animation script
       let scene = new THREE.Scene();
 
