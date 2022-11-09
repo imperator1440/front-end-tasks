@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap');
+
+@import "_nullstyle.scss";
+
+@mixin font($fz, $fw, $lh) {
+
+  font-size: $fz;
+  font-weight: $fw;
+  line-height: $lh;
+
+}
+
+body {
+  background-color: #B7BABE;
+  font-family: Manrope;
+}
+
+.header {
+
+  &__container {
+    max-width: 1024px;
+    text-align: center;
+    margin: auto;
+  }
+
+  &__title-top {
+    margin-top: 18px;
+  }
+
+  &__title {
+    margin-top: -9px;
+  }
+
+  &__subtitle {
+    max-width: 712px;
+    margin-top: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+}
+.title {
+
+  @include font(84px, 700, 114.74px);
+
+  &_small {
+    @include font(36px, 800, 49.18px);
+  }
+
+  &_subtitle {
+    @include font(28px, 600, 38.25px);
+    color: #fff;
+  }
+
+  span {
+    color: #fff;
+  }
+}
+

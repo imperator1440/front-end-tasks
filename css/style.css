@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap"); /*zeroing*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*--------------------*/
+body {
+  background-color: #B7BABE;
+  font-family: Manrope;
+}
+
+.header__container {
+  max-width: 1024px;
+  text-align: center;
+  margin: auto;
+}
+.header__title-top {
+  margin-top: 18px;
+}
+.header__title {
+  margin-top: -9px;
+}
+.header__subtitle {
+  max-width: 712px;
+  margin-top: 4px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  font-size: 84px;
+  font-weight: 700;
+  line-height: 114.74px;
+}
+.title_small {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 49.18px;
+}
+.title_subtitle {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 38.25px;
+  color: #fff;
+}
+.title span {
+  color: #fff;
+}
