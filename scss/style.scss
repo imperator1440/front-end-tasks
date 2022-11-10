@@ -16,7 +16,9 @@ body {
 }
 
 .header {
-
+  display: flex;
+  
+  
   &__container {
     max-width: 1024px;
     text-align: center;
@@ -36,7 +38,6 @@ body {
     margin-top: 4px;
     margin-left: auto;
     margin-right: auto;
-    
   }
 }
 .title {
@@ -57,3 +58,16 @@ body {
   }
 }
 
+.content {
+
+  &__container {
+  }
+
+  &__block {
+  }
+}
+.block {
+
+  &__fox-task {
+  }
+}

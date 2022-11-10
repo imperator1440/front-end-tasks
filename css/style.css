@@ -76,6 +76,9 @@ body {
   font-family: Manrope;
 }
 
+.header {
+  display: flex;
+}
 .header__container {
   max-width: 1024px;
   text-align: center;
