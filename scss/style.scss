@@ -2,6 +2,8 @@
 
 @import "_nullstyle.scss";
 
+$border-param: 1px solid #191B1D;
+
 @mixin font($fz, $fw, $lh) {
 
   font-size: $fz;
@@ -59,15 +61,76 @@ body {
 }
 
 .content {
-
+  
   &__container {
+    display: flex;
+    margin-top: 40px;
+    border-top: $border-param;
+    border-bottom: $border-param;
   }
 
   &__block {
+    max-width: 50%;
   }
 }
-.block {
+.block-fox {
 
-  &__fox-task {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: $border-param;
+  
+  &__task {
+    max-width: 294px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    text-align: center;
+    @include font(14px, 400, 19px)
+  }
+
+  &__fox {
+    position: relative;
+    margin-top: -250px;
+  }
+}
+
+.block-card {
+
+  
+  &__animation {
+  }
+
+  &__card { 
+  }
+
+  &__birds1 {
+  }
+
+  &__birds2 {
+  }
+
+  &__task {
+  }
+}
+.card {
+
+  &_button {
+  }
+
+  &__infinity {
+  }
+
+  &__title {
+  }
+
+  &__info {
+  }
+}
+.button {
+
+  &__image {
+  }
+
+  &__text {
   }
 }
