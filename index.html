@@ -23,11 +23,12 @@
         <div class="content__container">
           <div class="content__block block-fox">
             <div id="fox_task" class="block-fox__fox"></div>
-            <div class="block-fox__task">Анимация: вращение вокруг своей оси автоматически, или с реакцией на мышку.</div>
+            <div class="block-fox__task task">Анимация: вращение вокруг своей оси автоматически, или с реакцией на мышку.</div>
           </div>
 
           <div class="content__block block-card">
             <div class="block-card__animation">
+              <div class="block-card__birds1"><img src="/svg/birds1.svg"></div>
               <div class="block-card__card card">
                 <div class="card__infinity"><img src="/svg/infinity.svg" alt="infinity"></div>
                 <div class="card__title">Интерактивная карточка</div>
@@ -37,46 +38,14 @@
                   <div class="button__text">КНОПКА</div>
                 </button>
               </div>  
-              <div class="block-card__birds1"></div>
-              <div class="block-card__birds2"></div>
+              <div class="block-card__birds2"><img src="/svg/birds2.svg"></div>
             </div>
-            <div class="block-card__task">Анимация: карточка отклоняется по направлению к курсору. Верхний и нижний слой с птицами повторяет движение карточки с легким параллаксом</div>
-          </div>
-
-
-          <div class="content__block block-form">
-            
-          </div>
-          <div class="content__block block-tab">
-            
+            <div class="block-card__task task">Анимация: карточка отклоняется по направлению к курсору. Верхний и нижний слой с птицами повторяет движение карточки с легким параллаксом</div>
           </div>
         </div>   
       </div>
 
-  <!--<div class="card_task">
-          <div class="animation">
-            <div class="card">
-              <div class="flex_container">
-                <p class="infinity"><img src="/svg/infinity.svg" alt="infinity"></p>    
-                <p class="card_title">Интерактивная карточка</p>
-                <p class="card_info">Должна вращаться за мышкой</p>
-                <button class="button">
-                  <img src="/svg/visibility.svg" class="eye">    
-                  <p class="button_text">КНОПКА</p>
-                </button>
-              </div> 
-            </div>   
-            <div class="bird1">
-              <img src="/svg/birds1.svg" class="eye"> 
-            </div> 
-            <div class="bird2">
-              <img src="/svg/birds2.svg" class="eye"> 
-            </div>
-          </div>  
-        </div>
-        <p class="card_task_text">Анимация: карточка отклоняется по направлению к курсору. Верхний и нижний слой с птицами повторяет движение карточки с легким параллаксом.</p>
-      </div>
-      <div class="form_task">
+  <!--<div class="form_task">
         <form action="#" method="post" enctype="multipart/form-data" class="form">
           <p class="form_title">Форма</p>
           <p class="form_info">Дополнительный текст ⏳</p>
@@ -139,10 +108,10 @@
     </script>
     <script> //card animation script
       const card = document.querySelector(".card");
-      const animation = document.querySelector(".animation")
+      const animation = document.querySelector(".block-card__animation")
       let cardCoord= card.getBoundingClientRect();
   
-      let block = document.querySelector(".card_task");
+      let block = document.querySelector(".block-card");
       let blockCoord = block.getBoundingClientRect();
   
       let cardCenterX = cardCoord.left + (cardCoord.width / 2) - blockCoord.left; 
@@ -173,8 +142,9 @@
         angle = Math.atan2(e.layerX - cardCenterX, cardCenterY) * 0.8;
         console.log(angle);
   
-        animation.style.transform = 'translate('+ positionX / forCard + '%,' + positionY / forCard +'%) rotateY('+ angle + 'rad)';    
-      }); //расположить птиц, исправить ротэйт 
+        card.style.transform = 'rotateY('+ angle + 'rad)';   
+        //translate('+ positionX / forCard + '%,' + positionY / forCard +'%)  
+      });  
     </script>
   </body>
 </html>
