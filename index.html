@@ -107,16 +107,24 @@
       rotating();
     </script>
     <script> //card animation script
+      const block = document.querySelector(".block-card");
+      const blockCoord = block.getBoundingClientRect();
+
+      const rotatingBlock = document.querySelector(".block-card__animation")
+
+      const parallaxBirds1 = document.querySelector(".block-card__birds1")
+      const parallaxBirds2 = document.querySelector(".block-card__birds2")
+      
       const card = document.querySelector(".card");
-      const animation = document.querySelector(".block-card__animation")
+
       let cardCoord= card.getBoundingClientRect();
   
-      let block = document.querySelector(".block-card");
-      let blockCoord = block.getBoundingClientRect();
-  
-      let cardCenterX = cardCoord.left + (cardCoord.width / 2) - blockCoord.left; 
-      let cardCenterY = cardCoord.top + (cardCoord.height / 2) - blockCoord.top; 
       
+      //let blockCenterX = blockCoord.x / 2;
+      //let cardCenterX = cardCoord.left + (cardCoord.width / 2) - blockCoord.left; 
+      //let cardCenterY = cardCoord.top + (cardCoord.height / 2) - blockCoord.top; 
+      
+      // data for parallax
       const forCard = 40;
       const speed = 1;
       let positionX = 0; positionY = 0;
@@ -139,11 +147,12 @@
         positionX = positionX + (distX * speed);
         positionY = positionY + (distY * speed);
         
-        angle = Math.atan2(e.layerX - cardCenterX, cardCenterY) * 0.8;
-        console.log(angle);
+        //angle = Math.atan2(e.layerX - cardCenterX, cardCenterY) * 0.8;
+        //console.log(angle);
   
-        card.style.transform = 'rotateY('+ angle + 'rad)';   
-        //translate('+ positionX / forCard + '%,' + positionY / forCard +'%)  
+        //rotatingBlock.style.transform = 'rotateY('+ angle + 'rad)';   
+        parallaxBirds1.style.transform = 'translate('+ positionX / forCard + '%,' + positionY / forCard +'%)'; 
+        parallaxBirds2.style.transform = 'translate('+ positionX / forCard + '%,' + positionY / forCard +'%)'; 
       });  
     </script>
   </body>
