@@ -42,29 +42,25 @@
             </div>
             <div class="block-card__task task">Анимация: карточка отклоняется по направлению к курсору. Верхний и нижний слой с птицами повторяет движение карточки с легким параллаксом</div>
           </div>
+          
+          <div class="content__block block-form">
+            <form action="#" method="post" enctype="multipart/form-data" class="block-form__form form">
+              <div class="form__title">Форма</div>
+              <div class="form__info">Дополнительный текст ⏳</div>
+              <select name="select" class="form__select">
+                <option class="form__option" value="value0" selected>Выбор чего-то*</option>
+                <option class="form__option" value="value1">Выбор1</option>
+                <option class="form__option" value="value2">Выбор2</option>
+                <option class="form__option" value="value3">Выбор3</option>
+                <option class="form__option" value="value4">Выбор4</option>
+                <option class="form__option" value="value5">Выбор5</option>
+              </select>
+            </form>
+            <div class="block-card__task task">Сверстать форму с учетом всех состояний.</div>
+          </div>
         </div>   
       </div>
 
-  <!--<div class="form_task">
-        <form action="#" method="post" enctype="multipart/form-data" class="form">
-          <p class="form_title">Форма</p>
-          <p class="form_info">Дополнительный текст ⏳</p>
-
-          <select name="select">
-            <option selected value="xxx">Выбор чего-то*</option>
-            <option value="value1">Выбор1</option>
-            <option value="value2">Выбор2</option>
-            <option value="value3">Выбор3</option>
-            <option value="value4">Выбор4</option>
-            <option value="value5">Выбор5</option>
-          </select>
-
-        </form>
-      </div>
-      <div></div>
-
-    </div>
-  -->  
     <script> //fox animation script
       let scene = new THREE.Scene();
 
@@ -108,24 +104,14 @@
     </script>
     <script> //card animation script
       const block = document.querySelector(".block-card");
-      const blockCoord = block.getBoundingClientRect();
 
-      const rotatingBlock = document.querySelector(".block-card__animation")
+      const rotatingBlock = document.querySelector(".block-card__animation");
 
-      const parallaxBirds1 = document.querySelector(".block-card__birds1")
-      const parallaxBirds2 = document.querySelector(".block-card__birds2")
-      
-      const card = document.querySelector(".card");
-
-      let cardCoord= card.getBoundingClientRect();
-  
-      
-      //let blockCenterX = blockCoord.x / 2;
-      //let cardCenterX = cardCoord.left + (cardCoord.width / 2) - blockCoord.left; 
-      //let cardCenterY = cardCoord.top + (cardCoord.height / 2) - blockCoord.top; 
+      const parallaxBirds1 = document.querySelector(".block-card__birds1");
+      const parallaxBirds2 = document.querySelector(".block-card__birds2");
       
       // data for parallax
-      const forCard = 40;
+      const forBird = 40;
       const speed = 1;
       let positionX = 0; positionY = 0;
       let coordXprocent = 0; coordYprocent = 0;
@@ -135,8 +121,8 @@
         const blockWidth = block.offsetWidth;
         const blockHeight = block.offsetHeight;
 
-        const coordX = e.pageX - blockWidth / 2;
-        const coordY = e.pageY - blockHeight / 2;
+        const coordX = e.pageX - blockWidth - blockWidth / 2;
+        const coordY = e.pageY - blockHeight - blockHeight / 2;
         
         coordXprocent = coordX / blockWidth * 100;
         coordYprocent = coordY / blockHeight * 100;
@@ -147,13 +133,17 @@
         positionX = positionX + (distX * speed);
         positionY = positionY + (distY * speed);
         
-        //angle = Math.atan2(e.layerX - cardCenterX, cardCenterY) * 0.8;
+        angle = Math.atan2(coordX, blockHeight / 2);
         //console.log(angle);
   
-        //rotatingBlock.style.transform = 'rotateY('+ angle + 'rad)';   
-        parallaxBirds1.style.transform = 'translate('+ positionX / forCard + '%,' + positionY / forCard +'%)'; 
-        parallaxBirds2.style.transform = 'translate('+ positionX / forCard + '%,' + positionY / forCard +'%)'; 
+        rotatingBlock.style.transform = 'rotateY('+ angle + 'rad)';   
+        parallaxBirds1.style.transform = 'translate('+ positionX / forBird + '%,' + positionY / forBird +'%)'; 
+        parallaxBirds2.style.transform = 'translate('+ positionX / forBird + '%,' + positionY / forBird +'%)'; 
       });  
+    </script>
+    <script>
+      let optionToHide = document.querySelector(".form__option");
+      optionToHide.setAttribute('style', 'display:none');
     </script>
   </body>
 </html>
