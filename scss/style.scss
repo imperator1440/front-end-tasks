@@ -1,4 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap');
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 400; 
+  src: local("Manrope"),
+  url("/fonts/Manrope-Regular.ttf") format("truetype")
+}
+
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 600; 
+  src: local("Manrope"),
+  url("/fonts/Manrope-SemiBold.ttf") format("truetype")
+}
+
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 700; 
+  src: local("Manrope"),
+  url("/fonts/Manrope-Bold.ttf") format("truetype")
+}
+
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 800; 
+  src: local("Manrope"),
+  url("/fonts/Manrope-ExtraBold.ttf") format("truetype")
+}
 
 @import "_nullstyle.scss";
 
@@ -16,7 +46,6 @@ body {
   background-color: #B7BABE;
   font-family: Manrope;
 }
-
 .header {
   
   &__container {
@@ -57,7 +86,6 @@ body {
     color: #fff;
   }
 }
-
 .content {
 
   &__container {
@@ -73,12 +101,17 @@ body {
     flex-direction: column;
     align-items: center;
     width: 50%;
+
+    &_right-border {
+      border-right: $border-param;
+    }
+  
+    &_bottom-border {
+      border-bottom: $border-param;
+    }
   }
 }
 .block-fox {
-
-  border-right: $border-param;
-  border-bottom: $border-param;
   
   &__task {
     margin-bottom: 50px;
@@ -90,10 +123,8 @@ body {
     margin-top: -250px;
   }
 }
-
 .block-card {
 
-  border-bottom: $border-param;
   perspective: 1000px;
 
   &__animation {
@@ -178,25 +209,17 @@ body {
     margin-left: 9px;
   }
 }
-
-.block-form {
-
-  border-right: $border-param;
-  border-bottom: $border-param;
-
-  &__form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 504px;
-    height: 608px;
-    margin-top: 54px;
-  }
+.card-body {
+  width: 504px;
+  height: 608px;
+  margin-top: 54px;
+  background-color: #FFFFFF;
 }
 .form {
-
-  background-color: #FFFFFF;
   border-top: 5px solid #FDD170;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &__title {
     @include font(40px, 700, 68px);
@@ -226,10 +249,33 @@ body {
   }
 
   &__option {
-
-    
     font-family: Manrope;
     @include font(20px, 400, 32px);
+  }
+}
+
+.tabs-container {
+  display: flex;
+}
+
+.numbers {
+
+		&__num {
+		}
+}
+
+
+.tabs {
+
+  width: 288px;
+  
+
+  &__title {
+    @include font(16px, 700, 16px)
+  }
+
+  &__info {
+    @include font(13px, 400, 16px)
   }
 }
 

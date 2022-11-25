@@ -18,14 +18,12 @@
           <div class="header__subtitle title title_subtitle">Сверстайте эту страницу включая интерактивные элементы.</div>
         </div>
       </div> 
-
       <div class="content">
         <div class="content__container">
           <div class="content__block block-fox">
             <div id="fox_task" class="block-fox__fox"></div>
             <div class="block-fox__task task">Анимация: вращение вокруг своей оси автоматически, или с реакцией на мышку.</div>
           </div>
-
           <div class="content__block block-card">
             <div class="block-card__animation">
               <div class="block-card__birds1"><img src="/svg/birds1.svg"></div>
@@ -42,21 +40,42 @@
             </div>
             <div class="block-card__task task">Анимация: карточка отклоняется по направлению к курсору. Верхний и нижний слой с птицами повторяет движение карточки с легким параллаксом</div>
           </div>
-          
-          <div class="content__block block-form">
-            <form action="#" method="post" enctype="multipart/form-data" class="block-form__form form">
-              <div class="form__title">Форма</div>
-              <div class="form__info">Дополнительный текст ⏳</div>
-              <select name="select" class="form__select">
-                <option class="form__option" value="value0" selected>Выбор чего-то*</option>
-                <option class="form__option" value="value1">Выбор1</option>
-                <option class="form__option" value="value2">Выбор2</option>
-                <option class="form__option" value="value3">Выбор3</option>
-                <option class="form__option" value="value4">Выбор4</option>
-                <option class="form__option" value="value5">Выбор5</option>
-              </select>
-            </form>
+          <div class="content__block">
+            <div class="card-body">
+              <form action="#" method="post" enctype="multipart/form-data" class="form">
+                <div class="form__title">Форма</div>
+                <div class="form__info">Дополнительный текст ⏳</div>
+                <select name="select" class="form__select">
+                  <option class="form__option" value="value0" selected>Выбор чего-то*</option>
+                  <option class="form__option" value="value1">Выбор1</option>
+                  <option class="form__option" value="value2">Выбор2</option>
+                  <option class="form__option" value="value3">Выбор3</option>
+                  <option class="form__option" value="value4">Выбор4</option>
+                  <option class="form__option" value="value5">Выбор5</option>
+                </select>
+              </form>
+            </div>
             <div class="block-card__task task">Сверстать форму с учетом всех состояний.</div>
+          </div>
+          <div class="content__block">
+            <div class="card-body">
+              <div class="tabs-container">
+                <div class="numbers">
+                  <div class="numbers__num">1</div>
+                  <div class="numbers__num">2</div>
+                  <div class="numbers__num">3</div>
+                </div>
+                <div class="tabs">
+                  <div id="title1" class="tabs__title">Заголовок1</div>
+                  <div class="tabs__info">Какой-то текст про очень важные вещи о которых нужно было написать внутри этих табов.</div>
+                  <div id="title2" class="tabs__title">Заголовок2</div>
+                  <div class="tabs__info">Какой-то текст про очень важные вещи о которых нужно было написать внутри этих табов.</div>
+                  <div id="title3" class="tabs__title">Заголовок3</div>
+                  <div class="tabs__info">Какой-то текст про очень важные вещи о которых нужно было написать внутри этих табов.</div>
+                </div>
+              </div>
+            </div>
+            <div class="block-tabs__task task">Сверстать табы</div>
           </div>
         </div>   
       </div>
@@ -142,8 +161,40 @@
       });  
     </script>
     <script>
-      let optionToHide = document.querySelector(".form__option");
-      optionToHide.setAttribute('style', 'display:none');
+      //let optionToHide = document.querySelector(".form__option");
+      //optionToHide.setAttribute('style', 'display:none');
+
+      //$(function(){
+      //  $('option:selected').hide();
+      //
+      //  $('option').css({
+      //    'fonr-family': 'Manrope',
+		  //    'font-weight': '400',
+      //
+      //  });
+      //});
+
+      
+    </script>
+    <script>
+      $(function(){
+        $('#title1').on('click', f_acc);
+        $('#title2').on('click', f_acc);
+        $('#title3').on('click', f_acc);
+        
+      });
+
+      let isClosed = true;
+
+      function f_acc(){
+          if (isClosed) {
+            $(this).next().slideUp(300);  
+            isClosed = false;
+          } else {
+            $(this).next().slideDown(300);  
+            isClosed = true;
+          }
+        }
     </script>
   </body>
 </html>
