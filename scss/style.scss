@@ -256,34 +256,69 @@ body {
 
 .tabs-container {
   display: flex;
+  justify-content: center;
 }
 
 .numbers {
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 88px;
+  height: 178px;
+  margin-top: 89px;
+  
 		&__num {
+      width: 88px;
+      height: 48px;
+      @include font(20px, 800, 24px);
+      text-align: center;
 		}
 }
 
 
 .tabs {
 
+  display: flex;
+  flex-direction: column;
   width: 288px;
-  
+  height: 178px;
+  margin-top: 93px;
+  margin-left: 36px;
 
   &__title {
-    @include font(16px, 700, 16px)
+    display: flex;
+    justify-content: space-between;
+    width: 240px;
+    @include font(16px, 700, 16px);
+    text-align: center;
+
+    &_margin-top {
+      margin-top: 32px;
+    }
+
+  }
+
+  &__title::after {
+    content: url('../svg/arrow_down.svg');
   }
 
   &__info {
-    @include font(13px, 400, 16px)
+    width: 240px;
+    margin-top: 16px;
+    @include font(13px, 400, 16px);
   }
 }
-
 
 .task {
   max-width: 294px;
   text-align: center;
   @include font(14px, 400, 19px)
+}
+
+.line {
+  border: 1px solid #191B1D;
+  margin-top: 16px;
 }
 
 

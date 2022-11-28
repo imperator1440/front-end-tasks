@@ -20,11 +20,11 @@
       </div> 
       <div class="content">
         <div class="content__container">
-          <div class="content__block block-fox">
+          <div class="content__block content__block_bottom-border content__block_right-border block-fox">
             <div id="fox_task" class="block-fox__fox"></div>
             <div class="block-fox__task task">Анимация: вращение вокруг своей оси автоматически, или с реакцией на мышку.</div>
           </div>
-          <div class="content__block block-card">
+          <div class="content__block content__block_bottom-border block-card">
             <div class="block-card__animation">
               <div class="block-card__birds1"><img src="/svg/birds1.svg"></div>
               <div class="block-card__card card">
@@ -40,7 +40,7 @@
             </div>
             <div class="block-card__task task">Анимация: карточка отклоняется по направлению к курсору. Верхний и нижний слой с птицами повторяет движение карточки с легким параллаксом</div>
           </div>
-          <div class="content__block">
+          <div class="content__block content__block_right-border content__block_bottom-border">
             <div class="card-body">
               <form action="#" method="post" enctype="multipart/form-data" class="form">
                 <div class="form__title">Форма</div>
@@ -57,7 +57,7 @@
             </div>
             <div class="block-card__task task">Сверстать форму с учетом всех состояний.</div>
           </div>
-          <div class="content__block">
+          <div class="content__block c ">
             <div class="card-body">
               <div class="tabs-container">
                 <div class="numbers">
@@ -68,10 +68,13 @@
                 <div class="tabs">
                   <div id="title1" class="tabs__title">Заголовок1</div>
                   <div class="tabs__info">Какой-то текст про очень важные вещи о которых нужно было написать внутри этих табов.</div>
-                  <div id="title2" class="tabs__title">Заголовок2</div>
+                  <div class="line"></div>
+                  <div id="title2" class="tabs__title tabs__title_margin-top">Заголовок2</div>
                   <div class="tabs__info">Какой-то текст про очень важные вещи о которых нужно было написать внутри этих табов.</div>
-                  <div id="title3" class="tabs__title">Заголовок3</div>
+                  <div class="line"></div>
+                  <div id="title3" class="tabs__title tabs__title_margin-top">Заголовок3</div>
                   <div class="tabs__info">Какой-то текст про очень важные вещи о которых нужно было написать внутри этих табов.</div>
+                  <div class="line"></div>
                 </div>
               </div>
             </div>
@@ -188,10 +191,10 @@
 
       function f_acc(){
           if (isClosed) {
-            $(this).next().slideUp(300);  
+            $(this).next().toggle(500);  
             isClosed = false;
           } else {
-            $(this).next().slideDown(300);  
+            $(this).next().toggle(500);  
             isClosed = true;
           }
         }
