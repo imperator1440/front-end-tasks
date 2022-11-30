@@ -302,11 +302,12 @@ body {
   justify-content: space-between;
   width: 88px;
   height: 178px;
-  margin-top: 89px;
+  margin-top: 77px;
 }
 .numbers__num {
   width: 88px;
   height: 48px;
+  padding-top: 12px;
   font-size: 20px;
   font-weight: 800;
   line-height: 24px;
@@ -314,8 +315,6 @@ body {
 }
 
 .tabs {
-  display: flex;
-  flex-direction: column;
   width: 288px;
   height: 178px;
   margin-top: 93px;
@@ -333,11 +332,15 @@ body {
 .tabs__title_margin-top {
   margin-top: 32px;
 }
-.tabs__title::after {
+.tabs__title-open::after {
   content: url("../svg/arrow_down.svg");
+}
+.tabs__title-close::after {
+  content: url("../svg/arrow_up.svg");
 }
 .tabs__info {
   width: 240px;
+  height: 50px;
   margin-top: 16px;
   font-size: 13px;
   font-weight: 400;
@@ -353,6 +356,6 @@ body {
 }
 
 .line {
-  border: 1px solid #191B1D;
+  border: 1px solid #F4F4F4;
   margin-top: 16px;
 }

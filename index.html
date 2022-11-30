@@ -66,13 +66,13 @@
                   <div class="numbers__num">3</div>
                 </div>
                 <div class="tabs">
-                  <div id="title1" class="tabs__title">Заголовок1</div>
+                  <div id="title1" class="tabs__title tabs__title-open">Заголовок1</div>
                   <div class="tabs__info">Какой-то текст про очень важные вещи о которых нужно было написать внутри этих табов.</div>
                   <div class="line"></div>
-                  <div id="title2" class="tabs__title tabs__title_margin-top">Заголовок2</div>
+                  <div id="title2" class="tabs__title tabs__title-open tabs__title_margin-top">Заголовок2</div>
                   <div class="tabs__info">Какой-то текст про очень важные вещи о которых нужно было написать внутри этих табов.</div>
                   <div class="line"></div>
-                  <div id="title3" class="tabs__title tabs__title_margin-top">Заголовок3</div>
+                  <div id="title3" class="tabs__title tabs__title-open tabs__title_margin-top">Заголовок3</div>
                   <div class="tabs__info">Какой-то текст про очень важные вещи о которых нужно было написать внутри этих табов.</div>
                   <div class="line"></div>
                 </div>
@@ -180,24 +180,18 @@
       
     </script>
     <script>
+      $('.tabs__info').hide();
+
       $(function(){
         $('#title1').on('click', f_acc);
         $('#title2').on('click', f_acc);
         $('#title3').on('click', f_acc);
-        
       });
 
-      let isClosed = true;
-
       function f_acc(){
-          if (isClosed) {
-            $(this).next().toggle(500);  
-            isClosed = false;
-          } else {
-            $(this).next().toggle(500);  
-            isClosed = true;
-          }
-        }
+        $(this).next().slideToggle();
+        $(this).toggleClass('tabs__title-open tabs__title-close');
+      }
     </script>
   </body>
 </html>
