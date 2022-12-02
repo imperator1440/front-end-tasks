@@ -312,6 +312,7 @@ body {
   font-weight: 800;
   line-height: 24px;
   text-align: center;
+  opacity: 0.35;
 }
 
 .tabs {

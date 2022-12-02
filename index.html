@@ -57,13 +57,13 @@
             </div>
             <div class="block-card__task task">Сверстать форму с учетом всех состояний.</div>
           </div>
-          <div class="content__block c ">
+          <div class="content__block content__block_bottom-border">
             <div class="card-body">
               <div class="tabs-container">
                 <div class="numbers">
-                  <div class="numbers__num">1</div>
-                  <div class="numbers__num">2</div>
-                  <div class="numbers__num">3</div>
+                  <div id="num1" class="numbers__num">1</div>
+                  <div id="num2" class="numbers__num">2</div>
+                  <div id="num3" class="numbers__num">3</div>
                 </div>
                 <div class="tabs">
                   <div id="title1" class="tabs__title tabs__title-open">Заголовок1</div>
@@ -78,7 +78,7 @@
                 </div>
               </div>
             </div>
-            <div class="block-tabs__task task">Сверстать табы</div>
+            <div class="block-card__task task">Сверстать табы.</div>
           </div>
         </div>   
       </div>
@@ -183,14 +183,39 @@
       $('.tabs__info').hide();
 
       $(function(){
-        $('#title1').on('click', f_acc);
-        $('#title2').on('click', f_acc);
-        $('#title3').on('click', f_acc);
+        $('.tabs__title').on('click', toggle);
       });
 
-      function f_acc(){
+      function toggle(){
         $(this).next().slideToggle();
         $(this).toggleClass('tabs__title-open tabs__title-close');
+        let titleId = this.id;
+        let numId = numCheck(titleId)
+        numBackground(numId);
+      }
+
+      function numCheck(titleId){
+        if (titleId.includes(1)) return 1;
+        if (titleId.includes(2)) return 2;
+        if (titleId.includes(3)) return 3;
+      }
+
+      let isOpen = [false, false, false];
+
+      function numBackground(numId) {
+        if (!isOpen[numId - 1]) {
+          $('#num' + numId).css({
+            'background':'#F4F4F4',
+            'opacity':'1'
+          });  
+          isOpen[numId - 1] = true;
+        } else {
+          $('#num' + numId).css({
+            'opacity':'0.35',
+            'background':'#FFFFFF'
+          });
+          isOpen[numId - 1] = false;
+        }
       }
     </script>
   </body>
