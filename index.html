@@ -45,13 +45,13 @@
               <form action="#" method="post" enctype="multipart/form-data" class="form">
                 <div class="form__title">Форма</div>
                 <div class="form__info">Дополнительный текст ⏳</div>
-                <select name="select" class="form__select">
-                  <option class="form__option" value="value0" selected>Выбор чего-то*</option>
-                  <option class="form__option" value="value1">Выбор1</option>
-                  <option class="form__option" value="value2">Выбор2</option>
-                  <option class="form__option" value="value3">Выбор3</option>
-                  <option class="form__option" value="value4">Выбор4</option>
-                  <option class="form__option" value="value5">Выбор5</option>
+                <select name="select" class="select">
+                  <option value="value0" disabled>Выбор чего-то*</option>
+                  <option value="value1">Выбор1</option>
+                  <option value="value2">Выбор2</option>
+                  <option value="value3">Выбор3</option>
+                  <option value="value4">Выбор4</option>
+                  <option value="value5">Выбор5</option>
                 </select>
               </form>
             </div>
@@ -163,23 +163,63 @@
         parallaxBirds2.style.transform = 'translate('+ positionX / forBird + '%,' + positionY / forBird +'%)'; 
       });  
     </script>
-    <script>
-      //let optionToHide = document.querySelector(".form__option");
-      //optionToHide.setAttribute('style', 'display:none');
+    <script> //form skript
+        $('.select').each(function() {
+          const _this = $(this),
+          selectOption = _this.find('option'),
+          selectOptionLength = selectOption.length,
+          selectedOption = selectOption.filter(':selected'),
+          duration = 450; // длительность анимации 
+        
+        _this.hide();
+        _this.wrap('<div class="select"></div>');
+        $('<div>', {
+            class: 'new-select',
+            text: _this.children('option:disabled').text()
+        }).insertAfter(_this);
 
-      //$(function(){
-      //  $('option:selected').hide();
-      //
-      //  $('option').css({
-      //    'fonr-family': 'Manrope',
-		  //    'font-weight': '400',
-      //
-      //  });
-      //});
+        const selectHead = _this.next('.new-select');
+        $('<div>', {
+            class: 'new-select__list'
+        }).insertAfter(selectHead);
 
-      
+        const selectList = selectHead.next('.new-select__list');
+        for (let i = 1; i < selectOptionLength; i++) {
+            $('<div>', {
+                class: 'new-select__item',
+                html: $('<span>', {
+                    text: selectOption.eq(i).text()
+                })
+            })
+            .attr('data-value', selectOption.eq(i).val())
+            .appendTo(selectList);
+        }
+
+        const selectItem = selectList.find('.new-select__item');
+        selectList.slideUp(0);
+        selectHead.on('click', function() {
+            if ( !$(this).hasClass('on') ) {
+                $(this).addClass('on');
+                selectList.slideDown(duration);
+            
+                selectItem.on('click', function() {
+                    let chooseItem = $(this).data('value');
+                
+                    $('select').val(chooseItem).attr('selected', 'selected');
+                    selectHead.text( $(this).find('span').text() );
+                
+                    selectList.slideUp(duration);
+                    selectHead.removeClass('on');
+                });
+              
+            } else {
+                $(this).removeClass('on');
+                selectList.slideUp(duration);
+            }
+        });
+      });
     </script>
-    <script>
+    <script> //tabs sсript
       $('.tabs__info').hide();
 
       $(function(){
