@@ -273,11 +273,19 @@ body {
   line-height: 24px;
   text-align: center;
 }
+.form__input-info {
+  height: 24px;
+  align-self: flex-start;
+  margin-top: 33px;
+  margin-left: 46px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #B7BABE;
+}
 .form__select {
-  width: 440px;
-  height: 64px;
-  margin-top: 32px;
-  border-bottom: 1px solid #F4F4F4;
+  width: 415px;
+  height: 40px;
   font-family: Manrope;
   font-size: 20px;
   font-weight: 400;
@@ -291,68 +299,56 @@ body {
   line-height: 32px;
 }
 
-.select {
-  display: block;
-  max-width: 215px;
-  width: 100%;
-  position: relative;
-}
-
 .new-select {
-  position: relative;
-  border: 1px solid #ced4da;
-  padding: 10px 15px;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #191B1D;
 }
-
 .new-select__list {
-  position: absolute;
-  top: 45px;
-  left: 0;
-  border: 1px solid #ced4da;
-  cursor: pointer;
-  width: 100%;
-  z-index: 2;
-  background: #fff;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  background: #FFFFFF;
+  box-shadow: 0px 10px 30px rgba(80, 86, 131, 0.1);
+}
+.new-select__element {
+  display: flex;
+  align-items: center;
+  width: 415px;
+  height: 48px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.new-select__element_clicked {
+  display: flex;
+  align-items: center;
+  width: 415px;
+  height: 48px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  background-color: #F4F4F4;
+}
+.new-select__element_clicked::before {
+  margin-left: 18px;
+  margin-right: 13px;
+  content: url("../svg/check.svg");
+}
+.new-select__element::before {
+  opacity: 0%;
+  margin-left: 18px;
+  margin-right: 13px;
+  content: url("../svg/check.svg");
+}
+.new-select__element:hover {
+  background-color: #F4F4F4;
 }
 
-.new-select__list.on {
-  display: block;
-}
-
-.new-select__item span {
-  display: block;
-  padding: 10px 15px;
-}
-
-.new-select__item span:hover {
-  color: #12b223;
-}
-
-.new-select:after {
-  content: "";
-  display: block;
-  width: 25px;
-  height: 25px;
-  position: absolute;
-  right: 9px;
-  top: 9px;
-  background: url("path-to-image") no-repeat right center/cover;
-  opacity: 0.6;
-  transition: all 0.27s ease-in-out;
-  transform: rotate(0deg);
-}
-
-.new-select.on:after {
-  transform: rotate(180deg);
+.new-select::after {
+  content: url("../svg/arrow_down.svg");
+  margin-top: -2px;
 }
 
 .tabs-container {

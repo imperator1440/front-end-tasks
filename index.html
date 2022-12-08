@@ -45,7 +45,8 @@
               <form action="#" method="post" enctype="multipart/form-data" class="form">
                 <div class="form__title">Форма</div>
                 <div class="form__info">Дополнительный текст ⏳</div>
-                <select name="select" class="select">
+                <div class="form__input-info"></div>
+                <select name="select" class="form__select">
                   <option value="value0" disabled>Выбор чего-то*</option>
                   <option value="value1">Выбор1</option>
                   <option value="value2">Выбор2</option>
@@ -164,58 +165,59 @@
       });  
     </script>
     <script> //form skript
-        $('.select').each(function() {
-          const _this = $(this),
-          selectOption = _this.find('option'),
-          selectOptionLength = selectOption.length,
-          selectedOption = selectOption.filter(':selected'),
-          duration = 450; // длительность анимации 
+      $('.form__select').each(function() {
+        const select = $(this);
+        let selectOption = select.find('option');
         
-        _this.hide();
-        _this.wrap('<div class="select"></div>');
-        $('<div>', {
-            class: 'new-select',
-            text: _this.children('option:disabled').text()
-        }).insertAfter(_this);
+        let duration = 450;
 
-        const selectHead = _this.next('.new-select');
+        select.hide();
+        select.wrap('<div class="form__select"></div>')
         $('<div>', {
-            class: 'new-select__list'
+          class: 'new-select',
+          text: select.children('option:disabled').text()
+        }).insertAfter(select);
+
+        const selectHead = select.next('.new-select');
+        $('<div>', {
+          class: 'new-select__list'
         }).insertAfter(selectHead);
 
         const selectList = selectHead.next('.new-select__list');
-        for (let i = 1; i < selectOptionLength; i++) {
+        for (let i = 1; i < selectOption.length; i++) {
             $('<div>', {
-                class: 'new-select__item',
-                html: $('<span>', {
-                    text: selectOption.eq(i).text()
-                })
+              class: 'new-select__element',
+              text: selectOption.eq(i).text()
             })
             .attr('data-value', selectOption.eq(i).val())
             .appendTo(selectList);
         }
-
-        const selectItem = selectList.find('.new-select__item');
+          
+        const selectElement = selectList.find('.new-select__element');
         selectList.slideUp(0);
+
+        let isOpen = false;
+        let isSelected = [false, false, false, false, false];
+        let isFirstTime = true;
         selectHead.on('click', function() {
-            if ( !$(this).hasClass('on') ) {
-                $(this).addClass('on');
-                selectList.slideDown(duration);
+          if (!isOpen) {
+            isOpen = true;
+            selectList.slideDown(duration);
+
+            selectElement.on('click', function() {
+
+              let chooseElem = $(this).data('value');
+              $('select').val(chooseElem).attr('selected', 'selected');
+              selectHead.text( $(this).text());
+                
+              isOpen = false;
+              selectList.slideUp(duration);
+            });
             
-                selectItem.on('click', function() {
-                    let chooseItem = $(this).data('value');
-                
-                    $('select').val(chooseItem).attr('selected', 'selected');
-                    selectHead.text( $(this).find('span').text() );
-                
-                    selectList.slideUp(duration);
-                    selectHead.removeClass('on');
-                });
-              
-            } else {
-                $(this).removeClass('on');
-                selectList.slideUp(duration);
-            }
+          } else {
+            isOpen = false;
+            selectList.slideUp(duration);
+          }
         });
       });
     </script>
