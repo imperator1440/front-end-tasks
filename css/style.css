@@ -293,6 +293,40 @@ body {
   line-height: 32px;
   background-color: #FFFFFF;
 }
+.form__phone-number {
+  width: 408px;
+  margin-top: 44px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
+}
+.form__phone-number::-moz-placeholder {
+  opacity: 1;
+}
+.form__phone-number:-ms-input-placeholder {
+  opacity: 1;
+}
+.form__phone-number::placeholder {
+  opacity: 1;
+}
+.form__textarea {
+  width: 408px;
+  margin-top: 44px;
+  overflow: hidden;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 32px;
+  resize: none;
+}
+.form__textarea::-moz-placeholder {
+  opacity: 1;
+}
+.form__textarea:-ms-input-placeholder {
+  opacity: 1;
+}
+.form__textarea::placeholder {
+  opacity: 1;
+}
 
 .new-select {
   display: flex;
