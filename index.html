@@ -45,7 +45,7 @@
               <form action="#" method="post" enctype="multipart/form-data" class="form">
                 <div class="form__title">Форма</div>
                 <div class="form__info">Дополнительный текст ⏳</div>
-                <div class="form__input-info"></div>
+                <div class="form__input-info">Выбор чего-то*</div>
                 <select name="select" class="form__select">
                   <option value="value0" disabled>Выбор чего-то*</option>
                   <option value="value1">Выбор1</option>
@@ -54,9 +54,17 @@
                   <option value="value4">Выбор4</option>
                   <option value="value5">Выбор5</option>
                 </select>
+                <div class="line_wide"></div>
+                <input class="form__phone-number" type="text" placeholder="Номер телефона*"/>
+                <div class="line_wide"></div>
+                <textarea class="form__textarea" placeholder="Коротко o чем-то ещё"></textarea>
+                <div class="line_wide"></div>
+                <input type="file"/>
+                <input type="submit">
+
               </form>
             </div>
-            <div class="block-card__task task">Сверстать форму с учетом всех состояний.</div>
+            <div class="block-card__task task">Сверстать форму c учетом всех состояний.</div>
           </div>
           <div class="content__block content__block_bottom-border">
             <div class="card-body">
@@ -197,21 +205,29 @@
         selectList.slideUp(0);
 
         let isOpen = false;
-        let isSelected = [false, false, false, false, false];
-        let isFirstTime = true;
-        selectHead.on('click', function() {
+
+        selectHead.on('click', function(e) {
           if (!isOpen) {
             isOpen = true;
             selectList.slideDown(duration);
 
-            selectElement.on('click', function() {
+            selectElement.on('click', function(event) {
+
+              selectElement.removeClass('new-select__element_clicked')
+              selectElement.addClass('new-select__element')
+
+              $(this).toggleClass('new-select__element new-select__element_clicked')
 
               let chooseElem = $(this).data('value');
               $('select').val(chooseElem).attr('selected', 'selected');
-              selectHead.text( $(this).text());
-                
+              selectHead.text($(this).text());
+              
+              $('.form__input-info').css('opacity', '1');
+
               isOpen = false;
               selectList.slideUp(duration);
+
+              event.stopImmediatePropagation()
             });
             
           } else {

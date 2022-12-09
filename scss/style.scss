@@ -238,12 +238,13 @@ body {
     margin-top: 33px;
     margin-left: 46px;
 
+    opacity: 0;
     @include font(14px, 400, 24px);
     color: #B7BABE;
   }
 
   &__select {
-    width: 415px;
+    width: 408px;
     height: 40px;
 
     font-family: Manrope;
@@ -251,24 +252,19 @@ body {
 
     background-color: #FFFFFF;
   }
-
-  &__option {
-    font-family: Manrope;
-    @include font(20px, 400, 32px);
-  }
+ 
 }
 
 .new-select {
   display: flex;
   justify-content: space-between;
 
-  border-bottom: 1px solid #191B1D;
-
   &__list {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
+    position: relative;
   
     background: #FFFFFF;
   
@@ -317,9 +313,6 @@ body {
   content: url('../svg/arrow_down.svg');
   margin-top: -2px;
 }
-
-
-
 
 
 .tabs-container {
@@ -393,6 +386,14 @@ body {
 .line {
   border: 1px solid #F4F4F4;
   margin-top: 16px;
+  margin-left: -12px;
+
+  &_wide {
+    border: 1px solid #F4F4F4;
+    margin-top: 8px;
+    width: 440px;
+  }
+
 }
 
 
