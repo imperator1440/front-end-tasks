@@ -172,7 +172,7 @@
         parallaxBirds2.style.transform = 'translate('+ positionX / forBird + '%,' + positionY / forBird +'%)'; 
       });  
     </script>
-    <script> //form skript
+    <script> //select script
       $('.form__select').each(function() {
         const select = $(this);
         let selectOption = select.find('option');
@@ -235,6 +235,40 @@
             selectList.slideUp(duration);
           }
         });
+      });
+    </script>
+    <script>
+      let textarea = document.querySelector('.form__textarea'),
+      hiddenDiv = document.createElement('div'),
+      content = null;
+      
+      hiddenDiv.classList.add('form__textarea');
+
+      hiddenDiv.style.display = 'none';
+      hiddenDiv.style.whiteSpace = 'pre-wrap';
+      hiddenDiv.style.wordWrap = 'break-word';
+
+      textarea.addEventListener('input', function() {
+
+        textarea.parentNode.appendChild(hiddenDiv);
+
+        textarea.style.resize = 'none';
+
+        textarea.style.overflow = 'hidden';
+          
+        content = textarea.value;
+          
+        content = content.replace(/\n/g, '<br>');
+
+        hiddenDiv.innerHTML = content + '<br style="line-height: 3px;">';
+
+          
+        hiddenDiv.style.visibility = 'hidden';
+        hiddenDiv.style.display = 'block';
+        textarea.style.height = hiddenDiv.offsetHeight + 'px';
+
+        hiddenDiv.style.visibility = 'visible';
+        hiddenDiv.style.display = 'none';
       });
     </script>
     <script> //tabs sсript

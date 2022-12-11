@@ -310,7 +310,9 @@ body {
   opacity: 1;
 }
 .form__textarea {
-  width: 408px;
+  width: 100%;
+  max-width: 408px;
+  min-height: 32px;
   margin-top: 44px;
   overflow: hidden;
   font-size: 20px;
