@@ -41,7 +41,7 @@
             <div class="block-card__task task">Анимация: карточка отклоняется по направлению к курсору. Верхний и нижний слой с птицами повторяет движение карточки с легким параллаксом</div>
           </div>
           <div class="content__block content__block_right-border content__block_bottom-border">
-            <div class="card-body">
+            <div id="form" class="card-body">
               <form action="#" method="post" enctype="multipart/form-data" class="form">
                 <div class="form__title">Форма</div>
                 <div class="form__info">Дополнительный текст ⏳</div>
@@ -57,10 +57,13 @@
                 <div class="line_wide"></div>
                 <input class="form__phone-number" type="text" placeholder="Номер телефона*"/>
                 <div class="line_wide"></div>
+                <div class="form__input-info form__input-info_top">Коротко о чем-то ещё*</div>
                 <textarea class="form__textarea" placeholder="Коротко o чем-то ещё"></textarea>
-                <div class="line_wide"></div>
-                <input type="file"/>
-                <input type="submit">
+                <div id="textarea-line" class="line_wide"></div>
+
+                <input class="form__file" type="file"/>
+      
+                <input class="form__submit" type="submit">
 
               </form>
             </div>
@@ -237,36 +240,50 @@
         });
       });
     </script>
-    <script>
-      let textarea = document.querySelector('.form__textarea'),
-      hiddenDiv = document.createElement('div'),
-      content = null;
-      
-      hiddenDiv.classList.add('form__textarea');
+    <script> //textarea script
+      const textarea = document.querySelector('.form__textarea');
+      textarea.style.height = 32 + 'px';
+      const form = document.querySelector('#form');
+      const hiddenDiv = document.createElement('div');
+      const line = document.querySelector('#textarea-line');
+      const info = document.querySelector('.form__input-info_top');
+      let content = null;
 
+      hiddenDiv.classList.add('form__textarea');
       hiddenDiv.style.display = 'none';
       hiddenDiv.style.whiteSpace = 'pre-wrap';
       hiddenDiv.style.wordWrap = 'break-word';
+      textarea.style.resize = 'none';
+      textarea.style.overflow = 'hidden';
+
+      textarea.onfocus = function() {
+        line.style.borderColor = '#191B1D';
+      };
+
+      textarea.onblur = function () {
+        line.style.borderColor = '#F4F4F4';
+      };
 
       textarea.addEventListener('input', function() {
 
         textarea.parentNode.appendChild(hiddenDiv);
-
-        textarea.style.resize = 'none';
-
-        textarea.style.overflow = 'hidden';
-          
+        let textareaHeight = textarea.offsetHeight;
         content = textarea.value;
-          
+        
         content = content.replace(/\n/g, '<br>');
 
         hiddenDiv.innerHTML = content + '<br style="line-height: 3px;">';
-
-          
+        
         hiddenDiv.style.visibility = 'hidden';
         hiddenDiv.style.display = 'block';
         textarea.style.height = hiddenDiv.offsetHeight + 'px';
+        if (textareaHeight != textarea.offsetHeight) {
+          form.style.height = form.offsetHeight - textareaHeight + textarea.offsetHeight + 'px';
+        }
 
+        info.style.opacity = '1';
+        if (textarea.value == "") info.style.opacity = '0';
+        
         hiddenDiv.style.visibility = 'visible';
         hiddenDiv.style.display = 'none';
       });

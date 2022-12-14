@@ -241,6 +241,10 @@ body {
     opacity: 0;
     @include font(14px, 400, 24px);
     color: #B7BABE;
+
+    &_top {
+      margin-top: 22px;
+    }
   }
 
   &__select {
@@ -266,8 +270,8 @@ body {
   &__textarea {
     width: 100%;
     max-width: 408px;
-    min-height: 32px;
-    margin-top: 44px;
+
+    margin-top: 6px;
     overflow: hidden;
 
     @include font(20px, 400, 32px);
@@ -279,8 +283,14 @@ body {
     opacity: 1;
   }
  
-}
+  &__file {
+    margin-top: 40px;
+  }
 
+  &__submit {
+    margin-top: 32px;
+  }
+}
 
 .new-select {
   display: flex;
@@ -367,7 +377,6 @@ body {
     
 }
 
-
 .tabs {
 
   width: 288px;
@@ -422,5 +431,3 @@ body {
   }
 
 }
-
-

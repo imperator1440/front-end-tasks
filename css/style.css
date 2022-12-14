@@ -284,6 +284,9 @@ body {
   line-height: 24px;
   color: #B7BABE;
 }
+.form__input-info_top {
+  margin-top: 22px;
+}
 .form__select {
   width: 408px;
   height: 40px;
@@ -312,8 +315,7 @@ body {
 .form__textarea {
   width: 100%;
   max-width: 408px;
-  min-height: 32px;
-  margin-top: 44px;
+  margin-top: 6px;
   overflow: hidden;
   font-size: 20px;
   font-weight: 400;
@@ -328,6 +330,12 @@ body {
 }
 .form__textarea::placeholder {
   opacity: 1;
+}
+.form__file {
+  margin-top: 40px;
+}
+.form__submit {
+  margin-top: 32px;
 }
 
 .new-select {
