@@ -261,10 +261,15 @@ body {
     width: 408px;
     margin-top: 44px;
     @include font(20px, 400, 32px);
-  }
 
-  &__phone-number::placeholder {
-    opacity: 1;
+    &_empty::placeholder {
+      opacity: 1;
+    }
+
+    &_erroneously::placeholder {
+      opacity: 1;
+      color: #EB5757;
+    }
   }
 
   &__textarea {
@@ -276,11 +281,11 @@ body {
 
     @include font(20px, 400, 32px);
 
-    resize: none;    
-  }
-
-  &__textarea::placeholder {
-    opacity: 1;
+    resize: none;  
+    
+    &::placeholder {
+      opacity: 1;
+    }
   }
  
   &__file {
@@ -324,31 +329,30 @@ body {
       height: 48px;
       @include font(14px, 400, 20px);
       background-color: #F4F4F4;
+      
+      &::before {
+        margin-left: 18px;
+        margin-right: 13px;
+        content: url('../svg/check.svg');
+      }
     }
 
-    &_clicked::before {
+    &::before {
+      opacity: 0%;
       margin-left: 18px;
       margin-right: 13px;
       content: url('../svg/check.svg');
     }
+
+    &:hover {
+      background-color: #F4F4F4;
+    } 
   }
 
-  &__element::before {
-    opacity: 0%;
-    margin-left: 18px;
-    margin-right: 13px;
-    content: url('../svg/check.svg');
+  &::after {
+    content: url('../svg/arrow_down.svg');
+    margin-top: -2px;
   }
-
-  &__element:hover {
-    background-color: #F4F4F4;
-  }
-
-}
-
-.new-select::after {
-  content: url('../svg/arrow_down.svg');
-  margin-top: -2px;
 }
 
 

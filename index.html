@@ -55,8 +55,8 @@
                   <option value="value5">Выбор5</option>
                 </select>
                 <div class="line_wide"></div>
-                <input class="form__phone-number" type="text" placeholder="Номер телефона*"/>
-                <div class="line_wide"></div>
+                <input class="form__phone-number form__phone-number_empty" type="text" placeholder="Номер телефона*"/>
+                <div id="phone-line" class="line_wide"></div>
                 <div class="form__input-info form__input-info_top">Коротко о чем-то ещё*</div>
                 <textarea class="form__textarea" placeholder="Коротко o чем-то ещё"></textarea>
                 <div id="textarea-line" class="line_wide"></div>
@@ -240,12 +240,30 @@
         });
       });
     </script>
+    <script> //phone number script
+      const phoneInput = document.querySelector('.form__phone-number');
+      const phoneLine = document.querySelector('#phone-line');
+
+      phoneInput.onfocus = function () {
+        phoneLine.style.borderColor = '#191B1D';
+      };
+
+      phoneInput.onblur = function () {
+        if (phoneInput.value) {
+          phoneLine.style.borderColor = '#F4F4F4';
+        } else {
+          phoneLine.style.borderColor = '#EB5757';
+          phoneInput.classList.remove("form__phone-number_empty");
+          phoneInput.classList.add("form__phone-number_erroneously");
+        }
+      };
+    </script>
     <script> //textarea script
       const textarea = document.querySelector('.form__textarea');
       textarea.style.height = 32 + 'px';
       const form = document.querySelector('#form');
       const hiddenDiv = document.createElement('div');
-      const line = document.querySelector('#textarea-line');
+      const areaLine = document.querySelector('#textarea-line');
       const info = document.querySelector('.form__input-info_top');
       let content = null;
 
@@ -257,11 +275,11 @@
       textarea.style.overflow = 'hidden';
 
       textarea.onfocus = function() {
-        line.style.borderColor = '#191B1D';
+        areaLine.style.borderColor = '#191B1D';
       };
 
       textarea.onblur = function () {
-        line.style.borderColor = '#F4F4F4';
+        areaLine.style.borderColor = '#F4F4F4';
       };
 
       textarea.addEventListener('input', function() {
@@ -282,8 +300,8 @@
         }
 
         info.style.opacity = '1';
-        if (textarea.value == "") info.style.opacity = '0';
-        
+        if (!textarea.value) info.style.opacity = '0';
+
         hiddenDiv.style.visibility = 'visible';
         hiddenDiv.style.display = 'none';
       });
