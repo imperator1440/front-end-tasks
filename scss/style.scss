@@ -292,8 +292,10 @@ body {
     margin-top: 40px;
   }
 
-  &__submit {
+  &__button {
     margin-top: 32px;
+    width: 288px;
+    height: 56px;
   }
 }
 
@@ -354,6 +356,43 @@ body {
     margin-top: -2px;
   }
 }
+
+.input-file {
+  width: 173px;
+  height: 56px;
+  margin-top: 32px;
+  margin-left: 46px;
+  align-self: flex-start;
+  display: flex;
+  justify-content: space-between;
+
+  &__text {
+    
+    @include font(14px, 600, 24px);
+  }
+
+
+  &__file {
+
+    &::after {
+      content: url('../svg/plus_short.svg');
+    }
+  }
+
+  input[type=file] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    width: 0;
+    height: 0;
+  }
+
+  &::before {
+    content: url('../svg/clip.svg');
+  }
+}
+
 
 
 .tabs-container {

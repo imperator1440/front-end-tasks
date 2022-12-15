@@ -61,10 +61,15 @@
                 <textarea class="form__textarea" placeholder="Коротко o чем-то ещё"></textarea>
                 <div id="textarea-line" class="line_wide"></div>
 
-                <input class="form__file" type="file"/>
+                <label class="input-file">           
+                  <input type="file" name="file">        
+                  <div class="input-file__text">Прикрепить файл</div>
+                </label>
       
-                <input class="form__submit" type="submit">
-
+                <button class="form__button button">
+                  <img src="/svg/visibility.svg" class="button__image">
+                  <div class="button__text">КНОПКА</div>
+                </button>
               </form>
             </div>
             <div class="block-card__task task">Сверстать форму c учетом всех состояний.</div>
@@ -304,6 +309,14 @@
 
         hiddenDiv.style.visibility = 'visible';
         hiddenDiv.style.display = 'none';
+      });
+    </script>
+    <script> //file input script
+      $('.input-file input[type=file]').on('change', function(){
+
+      let file = this.files[0];
+
+      $(this).closest('.input-file').children().html(file.name);
       });
     </script>
     <script> //tabs sсript

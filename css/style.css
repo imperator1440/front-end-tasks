@@ -346,8 +346,10 @@ body {
 .form__file {
   margin-top: 40px;
 }
-.form__submit {
+.form__button {
   margin-top: 32px;
+  width: 288px;
+  height: 56px;
 }
 
 .new-select {
@@ -399,6 +401,35 @@ body {
 .new-select::after {
   content: url("../svg/arrow_down.svg");
   margin-top: -2px;
+}
+
+.input-file {
+  width: 173px;
+  height: 56px;
+  margin-top: 32px;
+  margin-left: 46px;
+  align-self: flex-start;
+  display: flex;
+  justify-content: space-between;
+}
+.input-file__text {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+}
+.input-file__file::after {
+  content: url("../svg/plus_short.svg");
+}
+.input-file input[type=file] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  display: block;
+  width: 0;
+  height: 0;
+}
+.input-file::before {
+  content: url("../svg/clip.svg");
 }
 
 .tabs-container {
