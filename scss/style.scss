@@ -91,7 +91,7 @@ body {
   &__container {
     display: flex;
     flex-wrap: wrap;
-    max-width: 100%;
+    width: 100%;
     margin-top: 40px;
     border-top: $border-param;
   }
@@ -111,6 +111,7 @@ body {
     }
   }
 }
+
 .block-fox {
   
   &__task {
@@ -123,6 +124,7 @@ body {
     margin-top: -250px;
   }
 }
+
 .block-card {
 
   perspective: 1000px;
@@ -358,7 +360,7 @@ body {
 }
 
 .input-file {
-  width: 173px;
+  max-width: 400px;
   height: 56px;
   margin-top: 32px;
   margin-left: 46px;
@@ -367,13 +369,13 @@ body {
   justify-content: space-between;
 
   &__text {
-    
+    display: flex;
+    margin-left: 5px;
     @include font(14px, 600, 24px);
   }
 
-
   &__file {
-
+    
     &::after {
       content: url('../svg/plus_short.svg');
     }

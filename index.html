@@ -100,7 +100,7 @@
         </div>   
       </div>
 
-    <script> //fox animation script
+    <script>
       let scene = new THREE.Scene();
 
       let camera = new THREE.PerspectiveCamera(45, 630 / 640, 0.1, 1000)
@@ -110,7 +110,7 @@
       renderer = new THREE.WebGLRenderer({alpha: true, antialias: true});
       renderer.setClearColor(0x000000, 0);
       renderer.setSize(630, 640);
-          
+
       renderer.domElement.setAttribute("class", "fox");
       fox_task.append(renderer.domElement);
 
@@ -131,11 +131,11 @@
       })
 
       function rotating() {
-
+      
         requestAnimationFrame(rotating);
-
+      
         if(obj) obj.scene.rotation.y += 0.03
-
+      
         renderer.render(scene, camera);
       }
 
@@ -315,8 +315,19 @@
       $('.input-file input[type=file]').on('change', function(){
 
       let file = this.files[0];
+      let fileName = $(this).closest('.input-file').children();
+      fileName.html(file.name);
 
-      $(this).closest('.input-file').children().html(file.name);
+      $('<div>', {
+        class: 'input-file__file'
+        }).appendTo($('.input-file__text'));
+      });    
+
+      $('.input-file__file').on('click', function(){
+        file = 0;
+        this.remove();
+        console.log(111);
+        
       });
     </script>
     <script> //tabs sсript
